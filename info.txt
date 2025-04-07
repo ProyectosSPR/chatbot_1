@@ -1,0 +1,4 @@
+ngrok http --url=parakeet-cuddly-fowl.ngrok-free.app 800
+0
+
+uvicorn main:app --reload --port 8000
