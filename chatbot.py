@@ -1,4 +1,4 @@
-# your_module.py
+
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -6,7 +6,7 @@ from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
 from psycopg import connect
 import os
-import logging
+from logger import logger
 import db
 
 
@@ -28,7 +28,7 @@ def execute_sql_query(query: str):
 
 def chatbot_with_postgres(thread_id: str, query: str, prompt: str, model_name: str = "gpt-4o-mini", temperature: float = 0):
     if db.checkpointer is None:
-        logging.warning("Checkpointer no inicializado, intentando iniciar base de datos manualmente.")
+        
         db.init_db()
 
     tools = [execute_sql_query]
